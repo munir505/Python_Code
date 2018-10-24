@@ -167,38 +167,38 @@ def main():
     ship7_one.check_map()
     ship7_one.put_in_map()
 
-    ship1_one = Ships("P", 0, 0, "Right", Map_Battleship_Player_Two)
-    ship1_one.check_map()
-    ship1_one.put_in_map()
+    ship1_two = Ships("P", 9, 9, "Left", Map_Battleship_Player_Two)
+    ship1_two.check_map()
+    ship1_two.put_in_map()
 
-    ship2_two = Ships("P", 8, 1, "Right", Map_Battleship_Player_Two)
+    ship2_two = Ships("P", 9, 0, "Up", Map_Battleship_Player_Two)
     ship2_two.check_map()
     ship2_two.put_in_map()
 
-    ship3_two = Ships("B", 1, 6, "Left", Map_Battleship_Player_Two)
+    ship3_two = Ships("B", 4, 8, "Left", Map_Battleship_Player_Two)
     ship3_two.check_map()
     ship3_two.put_in_map()
 
-    ship4_two = Ships("B", 1, 9, "Down", Map_Battleship_Player_Two)
+    ship4_two = Ships("B", 5, 4, "Left", Map_Battleship_Player_Two)
     ship4_two.check_map()
     ship4_two.put_in_map()
 
-    ship5_two = Ships("S", 3, 4, "Down", Map_Battleship_Player_Two)
+    ship5_two = Ships("S", 8, 7, "Up", Map_Battleship_Player_Two)
     ship5_two.check_map()
     ship5_two.put_in_map()
 
-    ship6_two = Ships("D", 0, 9, "Left", Map_Battleship_Player_Two)
+    ship6_two = Ships("D", 8, 3, "Right", Map_Battleship_Player_Two)
     ship6_two.check_map()
     ship6_two.put_in_map()
 
-    ship7_two = Ships("C", 9, 9, "Left", Map_Battleship_Player_Two)
+    ship7_two = Ships("C", 0, 9, "Left", Map_Battleship_Player_Two)
     ship7_two.check_map()
     ship7_two.put_in_map()
 
+    print("Player One Map")
     map_battle.print_map_one()
-    print(" ")
+    print("Player Two Map")
     map_battle.print_map_two()
-    print(" ")
 
     while check_map_status():
         print("Player One Turn")
