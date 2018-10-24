@@ -189,7 +189,7 @@ def main():
         player_one_input.input_values(one_x_val, one_y_val, Map_Battleship_Player_Two)
         player_one_input.check_attempt()
         map_battle.print_map_one()
-        
+
         print("Player Two Turn")
         two_x_val = int(input("Enter X Val"))
         two_y_val = int(input("Enter Y Val"))
