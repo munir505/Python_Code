@@ -122,6 +122,38 @@ class PlayerInput:
             return True
 
 
+pl_one = [["P", 0, 0, "Right"],
+          ["P", 8, 1, "Right"],
+          ["B", 1, 6, "Left"],
+          ["B", 1, 9, "Down"],
+          ["S", 3, 4, "Down"],
+          ["D", 0, 9, "Left"],
+          ["C", 9, 9, "Left"]
+          ]
+
+pl_two = [["P", 9, 9, "Left"],
+          ["P", 9, 0, "Up"],
+          ["B", 4, 8, "Left"],
+          ["B", 5, 4, "Left"],
+          ["S", 8, 7, "Up"],
+          ["D", 8, 3, "Right"],
+          ["C", 0, 9, "Left"]
+          ]
+
+
+class PlayerInit:
+    def __init__(self):
+        self.player_map = []
+
+    def populate_map(self, player_map_own, pl_list):
+        self.player_map = player_map_own
+        for x in range(7):
+            ship_name = str(x)
+            ship_name = Ships(pl_list[x][0], pl_list[x][1], pl_list[x][2], pl_list[x][3], self.player_map)
+            ship_name.check_map()
+            ship_name.put_in_map()
+
+
 def check_map_status():
     is_dead = False
     for x in range(10):
@@ -139,61 +171,11 @@ def main():
     player_one_input = PlayerInput()
     player_two_input = PlayerInput()
 
-    ship1_one = Ships("P", 0, 0, "Right", Map_Battleship_Player_One)
-    ship1_one.check_map()
-    ship1_one.put_in_map()
+    player_one_layout = PlayerInit()
+    player_one_layout.populate_map(Map_Battleship_Player_One, pl_one)
 
-    ship2_one = Ships("P", 8, 1, "Right", Map_Battleship_Player_One)
-    ship2_one.check_map()
-    ship2_one.put_in_map()
-
-    ship3_one = Ships("B", 1, 6, "Left", Map_Battleship_Player_One)
-    ship3_one.check_map()
-    ship3_one.put_in_map()
-
-    ship4_one = Ships("B", 1, 9, "Down", Map_Battleship_Player_One)
-    ship4_one.check_map()
-    ship4_one.put_in_map()
-
-    ship5_one = Ships("S", 3, 4, "Down", Map_Battleship_Player_One)
-    ship5_one.check_map()
-    ship5_one.put_in_map()
-
-    ship6_one = Ships("D", 0, 9, "Left", Map_Battleship_Player_One)
-    ship6_one.check_map()
-    ship6_one.put_in_map()
-
-    ship7_one = Ships("C", 9, 9, "Left", Map_Battleship_Player_One)
-    ship7_one.check_map()
-    ship7_one.put_in_map()
-
-    ship1_two = Ships("P", 9, 9, "Left", Map_Battleship_Player_Two)
-    ship1_two.check_map()
-    ship1_two.put_in_map()
-
-    ship2_two = Ships("P", 9, 0, "Up", Map_Battleship_Player_Two)
-    ship2_two.check_map()
-    ship2_two.put_in_map()
-
-    ship3_two = Ships("B", 4, 8, "Left", Map_Battleship_Player_Two)
-    ship3_two.check_map()
-    ship3_two.put_in_map()
-
-    ship4_two = Ships("B", 5, 4, "Left", Map_Battleship_Player_Two)
-    ship4_two.check_map()
-    ship4_two.put_in_map()
-
-    ship5_two = Ships("S", 8, 7, "Up", Map_Battleship_Player_Two)
-    ship5_two.check_map()
-    ship5_two.put_in_map()
-
-    ship6_two = Ships("D", 8, 3, "Right", Map_Battleship_Player_Two)
-    ship6_two.check_map()
-    ship6_two.put_in_map()
-
-    ship7_two = Ships("C", 0, 9, "Left", Map_Battleship_Player_Two)
-    ship7_two.check_map()
-    ship7_two.put_in_map()
+    player_two_layout = PlayerInit()
+    player_two_layout.populate_map(Map_Battleship_Player_Two, pl_two)
 
     print("Player One Map")
     map_battle.print_map_one()
@@ -207,6 +189,7 @@ def main():
         player_one_input.input_values(one_x_val, one_y_val, Map_Battleship_Player_Two)
         player_one_input.check_attempt()
         map_battle.print_map_one()
+        
         print("Player Two Turn")
         two_x_val = int(input("Enter X Val"))
         two_y_val = int(input("Enter Y Val"))
