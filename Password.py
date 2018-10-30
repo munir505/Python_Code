@@ -1,7 +1,7 @@
 import hashlib
 import string
 
-password = "2Yh4s"
+password = "324"
 hash_object = hashlib.md5(password.encode())
 hashed_password = hash_object.hexdigest()
 
@@ -19,6 +19,7 @@ def fill_alpha(letter_list):
 
 
 def hash_password():
+    break_loop = False
     predicted_password = ""
     i_range = 0
     j_range = 0
@@ -35,15 +36,26 @@ def hash_password():
                         possible += alpha[k]
                         possible += alpha[j]
                         possible += alpha[i]
-                        print(possible)
-                        hash_object2 = hashlib.md5(possible.encode())
+                        check_val = possible.strip()
+                        print(check_val)
+                        hash_object2 = hashlib.md5(check_val.encode())
                         hashed_password2 = hash_object2.hexdigest()
                         if hashed_password2 == hashed_password:
-                            predicted_password = possible
+                            predicted_password = check_val
+                            break_loop = True
+                            break
                     l_range = 1
+                    if break_loop == True:
+                        break
                 k_range = 1
+                if break_loop == True:
+                    break
             j_range = 1
+            if break_loop == True:
+                break
         i_range = 1
+        if break_loop == True:
+            break
     print(i_range)
     return predicted_password
 
